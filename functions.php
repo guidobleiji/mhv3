@@ -50,18 +50,19 @@ add_action( 'after_setup_theme', 'mh_setup' );
 function mh_scripts() {
 	wp_enqueue_style('bootstrap-min', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
 	wp_enqueue_style('fontawesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-	wp_enqueue_style('fonts', get_template_directory_uri().'//fonts.googleapis.com/css?family=Amatic+SC:400,700|Nunito:200,200i,300,300i,400,400i,600,600i,700,700i');
+	wp_enqueue_style('fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Nunito:200,200i,300,300i,400,400i,600,600i,700,700i');
 	wp_enqueue_style('maaike-hogebrug', get_template_directory_uri().'/css/style.css');
+	wp_enqueue_style('overig', get_template_directory_uri().'/css/overig.css');
 	
 	wp_deregister_script('jquery');
     if(is_ssl())
 	{
-		wp_register_script('jquery', ('//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'), false, null, false);
+		wp_register_script('jquery', ('//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'), false, null, false);
     	wp_enqueue_script('jquery');
 	}
 	else
 	{
-		wp_register_script('jquery', ('//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'), false, null, false);
+		wp_register_script('jquery', ('//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'), false, null, false);
     	wp_enqueue_script('jquery');
 	}
 	
@@ -137,3 +138,13 @@ function remove_width_attribute( $html ) {
 }
 
 require get_template_directory() . '/bootstrap-navwalker.php';
+
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'hoofdmenu-links' => __( 'Hoofdmenu links' ),
+      'hoofdmenu-rechts' => __( 'Hoofdmenu rechts' )
+    )
+  );
+}
+add_action( 'init', 'register_my_menus' );

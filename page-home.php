@@ -16,7 +16,6 @@ get_header();?>
 </section>
 
 <section class="container-fluid mb-90" id="doorkiesblokken"> 
-
 <?php
 $args = array('posts_per_page' => -1, 'post_type' => 'fotografie');
 $diensten = new WP_Query($args);
@@ -28,7 +27,7 @@ if($diensten->have_posts())
 			{
 				$diensten->the_post();
 				echo '<article>';
-					echo '<a href="'.get_permalink().'" class="blok animatie schaduw br draai">';
+					echo '<div class="blok animatie schaduw br draai">';
 						echo '<figure>';
 							echo '<img src="'.get_field('dienst_afbeelding').'" class="img-fluid" />';
 						echo '</figure>';
@@ -38,9 +37,9 @@ if($diensten->have_posts())
 								echo '<span>Vanaf €'.get_field('dienst_vanaf').'</span>';
 							echo '</header>';
 							echo '<p class="mb-30">'.get_field('dienst_intro').'</p>';
-							echo '<p><span class="meer-informatie animatie">Meer informatie</span></p>';
+							echo '<p><a href="'.get_permalink().'" class="meer-informatie animatie">Meer informatie</a></p>';
 						echo '</div>';
-					echo '</a>';
+					echo '</div>';
 				echo '</article>';
 			}
 		echo '</div>';

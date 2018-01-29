@@ -7,10 +7,7 @@ get_header();?>
 <section class="container-fluid" id="intro">
     <div class="row">
         <div class="col offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 intro">
-            <header><h1 class="koptitel">Portfolio</h1></header>
-            <article>
-                <?php the_field('dienst_inhoud');?>
-            </article>
+            <header><h1 class="koptitel mb-0"><?php the_field('portfolio_titel');?> fotografie</h1></header>
         </div>
     </div>
 </section>

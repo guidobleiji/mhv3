@@ -2,10 +2,9 @@ jQuery(document).ready(function(jQuery){
 	jQuery('.carrousel-doorkiesblokken').owlCarousel({
 		loop:true,
 		margin:30,
-		stagePadding: 15,
+		stagePadding: 120,
 		nav: true,
 		navText: ["<i class='fa fa-chevron-circle-left'></i>","<i class='fa fa-chevron-circle-right'></i>"],
-		loop: false,
 		responsiveClass:true,
 		responsive:{
 			0:{
@@ -21,9 +20,43 @@ jQuery(document).ready(function(jQuery){
 				stagePadding: 15
 			},
 			991:{
-				items:3
+				items:2
 			},
 			1199:{
+				items:3
+			},
+			1366:{
+				items:4
+			}
+		}
+	});
+	
+	jQuery('.carrousel-pakketten').owlCarousel({
+		loop:false,
+		margin:30,
+		nav: true,
+		navText: ["<i class='fa fa-chevron-circle-left'></i>","<i class='fa fa-chevron-circle-right'></i>"],
+		responsiveClass:true,
+		responsive:{
+			0:{
+				items:1,
+				stagePadding: 15
+			},
+			575:{
+				items:2,
+				stagePadding: 15
+			},
+			767:{
+				items:2,
+				stagePadding: 15
+			},
+			991:{
+				items:2
+			},
+			1199:{
+				items:4
+			},
+			1366:{
 				items:4
 			}
 		}

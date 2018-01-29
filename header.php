@@ -23,44 +23,45 @@ if(is_singular('portfolio')){
 	echo '<meta property="og:image" content="'.get_field('portfolio_hoofdafbeelding').'">';
 	echo '<meta property="og:description" content="'.get_field('portfolio_inhoud').'">';
 }
-if(is_page(44)){
-	echo '<meta property="fb:app_id" content="152355671837018">';
-	echo '<meta property="og:url" content="'.get_permalink().'">';
-	echo '<meta property="og:type" content="article">';
-	echo '<meta property="og:title" content="Boek een fotoshoot of verras met een cadeaubon!">';
-	echo '<meta property="og:image" content="https://www.maaikehogebrug.nl/v2/wp-content/uploads/2016/10/milan.jpg">';
-	echo '<meta property="og:description" content="'.get_field('portfolio_inhoud').'">';
-}
 ?>
 <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 
-<section class="container-fluid fixed-top animatie" id="navigatie">	
-    <nav class="navbar navbar-expand-md col offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigatieLijst" aria-controls="navigatieLijst" aria-expanded="false">
+<section class="container-fluid fixed-top animatie" id="navigatie">
+    <nav class="navbar navbar-expand-md navbar-fixed-top d-flex justify-content-center p-0">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="navbar-toggler-icon pull-right">
                 <i class="fa fa-align-right" aria-hidden="true" style="font-size:24px;"></i>
                 <span id="menu">Menu</span>
             </span>
         </button>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigatieLijst" aria-controls="navigatieLijst" aria-expanded="false">
-            <span class="navbar-toggler-icon pull-right">
-                <i class="fa fa-align-right" aria-hidden="true" style="font-size:24px;"></i>
-                <span id="menu">Menu</span>
-            </span>
-        </button>     
-
-        <div class="collapse navbar-collapse" id="navigatieLijst">
+    
+        <div class="navbar-collapse collapse">
             <?php
             wp_nav_menu( array(
-                'theme_location' => 'hoofdmenu',
-                'menu_id'        => 'hoofdmenu',
+                'theme_location' => 'hoofdmenu-links',
+                'menu_id'        => 'hoofdmenu-links',
                 'container'      => false,
                 'depth'          => 2,
-                'menu_class'     => 'navbar-nav',
+                'menu_class'     => 'nav navbar-nav ml-auto navigatieLijst',
+                'walker'         => new Bootstrap_NavWalker(),
+                'fallback_cb'    => 'Bootstrap_NavWalker::fallback',
+            ) );
+            ?>
+            
+            <a class="navbar-brand" href="#">
+                <img src="https://www.maaikehogebrug.nl/v3/wp-content/themes/mh/images/maaike-hogebrug-fotografie.png" width="30" height="30" alt="Maaike Hogebrug Fotografie">
+            </a>
+            
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'hoofdmenu-rechts',
+                'menu_id'        => 'hoofdmenu-rechts',
+                'container'      => false,
+                'depth'          => 2,
+                'menu_class'     => 'nav navbar-nav mr-auto navigatieLijst',
                 'walker'         => new Bootstrap_NavWalker(),
                 'fallback_cb'    => 'Bootstrap_NavWalker::fallback',
             ) );

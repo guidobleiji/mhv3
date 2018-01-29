@@ -12,14 +12,12 @@ img {
 :root {
 	--groen:#4e9090;
 	--groenOverlay:rgba(78,144,144,.8);
-	--oranje:#ff9547;
-	--oranjeOverlay:rgba(255,149,71,.8);
 	--grijs:#454545;
 	--grijsOverlay:rgba(69,69,69,.8);
 	--wit:#ffffff;
 	--witOverlay:rgba(255,255,255,.8);
 	
-	--navigatie:600 18px/18px 'Nunito', sans-serif;
+	--navigatie:300 18px/18px 'Nunito', sans-serif;
 	--paragraaf:200 18px/36px 'Nunito', sans-serif;
 	--paragraafKlein:300 16px/30px 'Nunito', sans-serif;
 	--kleinDik:700 13px/13px 'Nunito', sans-serif;
@@ -75,6 +73,10 @@ img {
 
 	.mb-30 {
 		margin-bottom:30px;
+	}
+
+	.mb-60 {
+		margin-bottom:60px;
 	}
 	
 	.mb-90 {
@@ -211,7 +213,6 @@ p {
 	#navigatie li a {
 		font:var(--navigatie);
 		color:var(--wit);
-		text-transform:uppercase;
 		letter-spacing:0.075em;
 	}	
 	
@@ -237,11 +238,14 @@ p {
 			#navigatie .dropdown-menu a:last-of-type {
 				padding-bottom:0;
 			}
+			
+	.navbar-brand {
+		margin:0 30px;
+	}
 
 #intro {
 	background-image:url(https://www.maaikehogebrug.nl/v3/wp-content/uploads/2017/12/dominique-anouk.jpg);
 	background-size:cover;
-	background-attachment:fixed;
 	background-position:center center;
 	position:relative;
 	z-index:1;
@@ -302,11 +306,24 @@ p {
 	margin-top:-120px;
 }
 
-.meer-informatie {
-	color:var(--oranje);
-	font:var(--kleinDik);
-	text-transform:uppercase;
+.meer-informatie,
+.gform_button {
+	color:var(--wit) !important;
+	background:var(--grijs) !important;
+	font:var(--kleinDik) !important;
+	text-transform:uppercase !important;
+	padding:0 15px !important;
+	border-radius:10px !important;
+	display:inline-block !important;
+	height:30px !important;
+	line-height:30px !important;
+	text-decoration:none !important;
+	border:none !important;
 }
+
+	.meer-informatie:hover {
+		background:var(--grijsOverlay);	
+	}
 
 	.meer-informatie:after {
 		content:'\f105';
@@ -325,22 +342,18 @@ p {
 	text-decoration:none !important;
 }
 
-	.button:hover {
-		transform: translateY(-1px);
-	}
-
 	.button-wit {
-		color:var(--oranje) !important;
+		color:var(--grijs) !important;
 		background:var(--wit);
 	}
 	
 	.button-oranje {
 		color:var(--wit) !important;
-		background:var(--oranje);
+		background:var(--grijs);
 	}
 	
 		.button-oranje:hover {
-			background:var(--oranjeOverlay);
+			background:var(--grijsOverlay);
 		}
 	
 	.button-grijs {
@@ -435,7 +448,7 @@ p {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			font:var(--navigatie);
+			font:var(--button);
 			font-size:20px !important;
 			color:var(--wit) !important;
 			text-decoration:none !important;
@@ -451,6 +464,36 @@ ul.opties {
 	ul.opties li i {
 		margin-right:10px;
 	}
+
+#pakketten {
+	margin-top:-120px;
+}
+
+	.pakket {
+		background:#fff;
+		text-align:center;
+		font:var(--paragraafKlein);
+		letter-spacing:0;
+		padding-top:30px;
+		padding-bottom:30px;
+	}
+	
+		.pakket-prijs {
+			font:var(--prijs);
+		}
+	
+		.pakket ul {
+			list-style-type:none;
+			padding:0;
+		}
+		
+			.pakket ul li {
+				padding:7.5px 0;
+			}
+			
+				.pakket ul li:nth-child(odd) {
+					background:#f8f8f8;
+				}
 		
 #recensies {
 	background:#c0c0c0;
@@ -470,7 +513,7 @@ ul.opties {
 			}
 	
 		.recensie-waardering i {
-			color:var(--oranje);
+			color:var(--grijs);
 		}
 
 /* PORTFOLIO */

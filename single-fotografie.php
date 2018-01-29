@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-<section class="container-fluid" id="intro">
+<section class="container-fluid" id="intro" style="background-image:url(<?php the_field('header');?>;">
     <div class="row">
-        <div class="col offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 intro">
-            <header><h1 class="koptitel"><?php the_field('dienst_titel');?> Fotografie</h1></header>
+        <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 intro">
+            <header><h1 class="koptitel"><?php the_field('dienst_titel');?> fotografie</h1></header>
             <article>
                 <?php the_field('dienst_inhoud');?>
             </article>
@@ -11,12 +11,43 @@
     </div>
 </section>
 
-<section class="container-fluid mb-90" id="doorkiesblokken"> 
+<?php
+$pakketten = get_field('pakketten');
+if($pakketten){
+	?>
+<section class="container-fluid mb-90" id="pakketten">
+    <div class="owl-carousel carrousel-pakketten">
+        <?php
+        $pakketten = get_field('pakketten');
+        $dienstTitel = sanitize_title(get_field('dienst_titel'));
+        foreach($pakketten as $pakket){				
+            $pakketTitel = sanitize_title($pakket['pakket_titel']);
+			echo '<div class="blok animatie schaduw br pakket p-t-30">';
+				echo '<header><h2>'.$pakket['pakket_titel'].'</h2></header>';
+				echo '<span class="pakket-prijs mb-30 d-block">&euro;'.$pakket['pakket_prijs'].'</span>';
+				
+				$wat = $pakket['pakket_wat_krijg_je_ervoor'];
+				echo '<ul class="mb-30">';
+				foreach($wat as $inclusief){
+					echo '<li>'.$inclusief['pakket_inclusief'].'</li>';	
+				}
+				echo '</ul>';
+				echo '<p><a href="'.get_permalink(255).'?soort='.$dienstTitel.'&pakket='.$pakketTitel.'" class="meer-informatie animatie">Boek deze shoot</a></p>';
+			echo '</div>';
+        }
+        ;?>
+    </div>
+</section>
+    <?php
+}
+else{
+	?>
+<section class="container-fluid mb-90" id="doorkiesblokken" style="display:none;"> 
     <div class="row">
     	<div class="col offset-lg-2 col-lg-8 offset-xl-3 col-xl-6"> 
         	<div class="row d-flex">
                 <div id="dienstblokken">
-                    <div id="watkrijgje" class=" blok animatie schaduw br">
+                    <div id="watkrijgje" class="blok animatie schaduw br">
                         <div class="p-30">
                             <header>
                                 <h1 class="mb-0">De fotoshoot</h1>
@@ -34,7 +65,7 @@
                     
                     <div id="prijsboek">
                         <div id="prijsblok" class="blok animatie schaduw br">
-                            <span>€<?php the_field('dienst_vanaf');?></span>
+                            <span>v.a. €<?php the_field('dienst_vanaf');?></span>
                         </div>
                         <a href="#" id="boeken" class="animatie schaduw br button-oranje">
                             Boek deze shoot
@@ -45,10 +76,13 @@
     	</div>
     </div>
 </section>
+    <?php
+}
+;?>
 
 <section class="container-fluid mb-90">
     <div class="row">
-        <div class="col offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
             <h2>Extra informatie</h2>
             
             <h3>Voor de shoot</h3>            
