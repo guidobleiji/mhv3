@@ -1,5 +1,5 @@
 <?php
-if ( ! function_exists( 'mh_setup') ) :
+if( ! function_exists( 'mh_setup') ) :
 	function mh_setup() {
 	remove_action('wp_head', 'wp_generator');
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -26,23 +26,9 @@ if ( ! function_exists( 'mh_setup') ) :
 	// Custom CSS for the login page
 	// Create wp-login.css in your theme folder
 	function wpfme_loginCSS() {
-		echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/wp-login.css"/>';
+		echo '<link rel="stylesheet" type="text/css" href="'.get_bloginfo('template_directory').'/css/wp-login.css"/>';
 	}
 	add_action('login_head', 'wpfme_loginCSS');
-
-	// Add custom menus
-	register_nav_menus( array(
-		'hoofdmenu' => __( 'Hoofdmenu', 'mh' ),
-		'footermenu' => __( 'Footermenu', 'mh' ),
-		'seomenu' => __( 'SEO menu', 'mh' ),
-	) );
-	
-	function verberg() {
-		echo '<style type="text/css">';
-		echo '.menu-icon-comments, .menu-icon-links {display:none;}';
-		echo '</style>';
-	}	
-	add_action('admin_head', 'verberg');
 }
 endif;
 add_action( 'after_setup_theme', 'mh_setup' );
@@ -84,6 +70,9 @@ function mh_scripts() {
 	wp_register_script('masonryfilter', (get_template_directory_uri().'/js/masonryfilter.js'), false, null, true);
 	wp_enqueue_script('masonryfilter');
 	
+	wp_register_script('scrollreveal', ('//unpkg.com/scrollreveal/dist/scrollreveal.min.js'), false, null, true);
+	wp_enqueue_script('scrollreveal');
+	
 	wp_register_script('scripts', (get_template_directory_uri().'/js/scripts.js'), false, null, true);
 	wp_enqueue_script('scripts');
 }
@@ -96,7 +85,6 @@ add_action( 'wp_footer', 'my_deregister_scripts' );
 
 function custom_wp_nav_menu($var) {
   return is_array($var) ? array_intersect($var, array(
-		//List of allowed menu classes
 		'current_page_item',
 		'current_page_parent',
 		'current_page_ancestor',
@@ -110,10 +98,8 @@ function custom_wp_nav_menu($var) {
 add_filter('nav_menu_css_class', 'custom_wp_nav_menu');
 add_filter('nav_menu_item_id', 'custom_wp_nav_menu');
 add_filter('page_css_class', 'custom_wp_nav_menu');
-//Replaces "current-menu-item" with "active"
 function current_to_active($text){
 	$replace = array(
-		//List of menu item classes that should be changed to "active"
 		'current_page_item' => 'active',
 		'current_page_parent' => 'active',
 		'current_page_ancestor' => 'active',
@@ -122,7 +108,6 @@ function current_to_active($text){
 		return $text;
 	}
 add_filter ('wp_nav_menu','current_to_active');
-//Deletes empty classes and removes the sub menu class
 function strip_empty_classes($menu) {
     $menu = preg_replace('/ class=""| class="sub-menu"/','',$menu);
     return $menu;
@@ -142,8 +127,12 @@ require get_template_directory() . '/bootstrap-navwalker.php';
 function register_my_menus() {
   register_nav_menus(
     array(
-      'hoofdmenu-links' => __( 'Hoofdmenu links' ),
-      'hoofdmenu-rechts' => __( 'Hoofdmenu rechts' )
+      'hoofdmenu-links' => __('Hoofdmenu (links)'),
+      'hoofdmenu-rechts' => __('Hoofdmenu (rechts)'),
+      'hoofdmenu-footer' => __('Hoofdmenu (footer)'),
+      'diensten-footer' => __('Diensten (footer)'),
+      'portfolio-footer' => __('Portfolio (footer)'),
+      'seo-footer' => __('SEO (footer)')
     )
   );
 }

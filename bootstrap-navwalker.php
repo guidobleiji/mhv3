@@ -41,7 +41,7 @@ class Bootstrap_NavWalker extends Walker_Nav_Menu {
 		 * 1. For WordPress default: '.sub-menu'
 		 * 2. For Bootstrap Sub-Menu: '.dropdown-menu'
 		 */
-		$classes = array( 'sub-menu', 'dropdown-menu' );
+		$classes = array( 'sub-menu', 'dropdown-menu', 'br', 'schaduw', 'animatie' );
 		/**
 		 * Filters the CSS class(es) applied to a menu list element.
 		 *

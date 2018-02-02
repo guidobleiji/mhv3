@@ -83,7 +83,7 @@ else{
 <section class="container-fluid mb-90">
     <div class="row">
         <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-            <h2>Extra informatie</h2>
+            <h2>Extra informatie over een <span style="text-transform:lowercase;"><?php the_field('dienst_titel');?></span> fotoshoot</h2>
             
             <h3>Voor de shoot</h3>            
             <?php the_field('dienst_voor');?>
@@ -98,7 +98,11 @@ else{
 </section>
     
 <section class="container-fluid mb-90">
-    <div class="row">    
+    <div class="row">
+    	<div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <h2>Uitgelicht werk</h2>
+        </div>
+        
 		<?php
         $uitgelichtWerk = get_field('dienst_uitgelicht_werk');		
         foreach($uitgelichtWerk as $uitgelichteAfbeelding){

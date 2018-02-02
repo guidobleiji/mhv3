@@ -11,9 +11,11 @@ img {
 /* VARIABELEN */
 :root {
 	--groen:#4e9090;
-	--groenOverlay:rgba(78,144,144,.8);
+	--groenOverlay:rgba(78,144,144,.9);
 	--grijs:#454545;
 	--grijsOverlay:rgba(69,69,69,.8);
+	--lichtGrijs:#dcdcdc;
+	--lichtGrijsOverlay:rgba(220,220,220,.8);
 	--wit:#ffffff;
 	--witOverlay:rgba(255,255,255,.8);
 	
@@ -30,6 +32,7 @@ img {
 .animatie *,
 .animatie:before,
 .animatie:after {
+	-webkit-transition:all 0.3s ease;
 	transition:all 0.3s ease;
 }
 
@@ -88,16 +91,22 @@ img {
 	}
 
 .schaduw {
+	-webkit-box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
 	box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
 }
 
 	.schaduw:hover {
+		-webkit-box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.15);
 		box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.15);
 	}
 	
 .draai {
 	overflow:hidden;
+	-webkit-transform: scale(1) rotate(0deg);
+	-ms-transform: scale(1) rotate(0deg);
 	transform: scale(1) rotate(0deg);
+	-webkit-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
 
@@ -106,6 +115,8 @@ img {
 	}
 
 	.draai:hover img {
+		-webkit-transform: scale(1.2) rotate(7deg);
+		-ms-transform: scale(1.2) rotate(7deg);
 		transform: scale(1.2) rotate(7deg);
 	}
 
@@ -121,8 +132,17 @@ img {
 		width:100%;
 		height:100%;
 		background-color:transparent;
+		display:-webkit-box;
+		display:-webkit-flex;
+		display:-ms-flexbox;
 		display:flex;
+		-webkit-box-align:center;
+		-webkit-align-items:center;
+		-ms-flex-align:center;
 		align-items:center;
+		-webkit-box-pack:center;
+		-webkit-justify-content:center;
+		-ms-flex-pack:center;
 		justify-content:center;
 		font-family:'FontAwesome';
 		font-size:60px;
@@ -182,6 +202,15 @@ p {
 	p:last-of-type {
 		margin-bottom:0;
 	}
+	
+article a {
+	box-shadow: inset 0 -8px 0 #ffea96;
+}
+	
+ul,
+ol {
+	margin:0 0 60px 0;
+}
 
 /* ELEMENTEN */
 #navigatie {
@@ -189,10 +218,17 @@ p {
 }
 
 	#navigatie.scroll {
-		background:var(--groenOverlay);
+		background:var(--wit);
+		-webkit-box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.15);
 		box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.15);
-		padding:15px 0;
 	}
+	
+		#navigatie.scroll #hoofdmenu-links > li > a,
+		#navigatie.scroll #hoofdmenu-rechts > li > a {
+			font:var(--navigatie);
+			color:var(--grijs);
+			letter-spacing:0.075em;
+		}
 
 	#navigatie li {
 		margin:0 15px;
@@ -218,33 +254,54 @@ p {
 	
 	#navigatie .dropdown-menu {
 		margin-top:22px;
-		padding:15px;
-		left:-15px;
-		background:var(--groenOverlay);
-		border:none;
-		border-radius:0;
+		padding-top:0;
+		left:-30px;
+		background:#fff;
+		z-index:5;
+		border:none !important;
 	}
 	
 		#navigatie .dropdown-menu a {			
-			font:var(--kleinDik);
-			text-transform:none;
-			padding:15px 0;
+			color:var(--grijs) !important;
+			font:var(--paragraafKlein);
+			text-decoration:none !important;
+			padding:5px 30px;
 		}
 		
-			#navigatie .dropdown-menu a:first-of-type {
-				padding-top:0;
-			}
-			
-			#navigatie .dropdown-menu a:last-of-type {
-				padding-bottom:0;
+			#navigatie .dropdown-menu .dropdown-item.active,
+			#navigatie .dropdown-menu .dropdown-item:active {
+				background-color:#f8f8f8;
 			}
 			
 	.navbar-brand {
 		margin:0 30px;
+		width:30px;
+		height:30px;
+		padding:0;
 	}
+	
+		.navbar-brand.logo-desk path {
+			fill:var(--wit);
+		}
+		
+		.scroll .navbar-brand.logo-desk path {
+			fill:var(--groen);
+		}
+		
+		.navbar-brand.logo-mob {
+			margin:0;
+			position:absolute;
+			width:45px;
+			height:45px;
+		}
+		
+			.navbar-brand.logo-mob path {
+				fill:var(--groen) !important;
+			}
 
 #intro {
 	background-image:url(https://www.maaikehogebrug.nl/v3/wp-content/uploads/2017/12/dominique-anouk.jpg);
+	-webkit-background-size:cover;
 	background-size:cover;
 	background-position:center center;
 	position:relative;
@@ -252,6 +309,7 @@ p {
 	padding-top:120px;
 	padding-bottom:120px;
 	margin-bottom:60px;
+	text-align:center;
 }
 
 	#intro:before {
@@ -263,17 +321,6 @@ p {
 		width:100%;
 		height:100%;
 		z-index:0;		
-	}
-	
-	.bolletjes:after {
-		content:'';
-		position:absolute;
-		height:30px;
-		width:100%;
-		bottom:0;
-		left:0;
-		background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxhYWdfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSI2MHB4IiBoZWlnaHQ9IjMwcHgiIHZpZXdCb3g9IjAgMCA2MCAzMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNjAgMzAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGNpcmNsZSBmaWxsPSIjRjBGMEYwIiBjeD0iMzAiIGN5PSIzMCIgcj0iMzAiLz4NCjwvc3ZnPg0K);
-		background-repeat:repeat-x;
 	}
 
 .intro {
@@ -288,7 +335,7 @@ p {
 	.intro p {
 		font:var(--paragraaf);
 		color:var(--wit);
-		text-align:justify;
+		text-align:center;
 	}
 
 	.intro > p:first-of-type {
@@ -322,7 +369,7 @@ p {
 }
 
 	.meer-informatie:hover {
-		background:var(--grijsOverlay);	
+		background:var(--grijsOverlay) !important;	
 	}
 
 	.meer-informatie:after {
@@ -382,6 +429,9 @@ p {
 	text-decoration:none !important;
 	position:relative;
 	z-index:5;
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+	-ms-flex:1;
 	flex:1;
 }
 
@@ -404,6 +454,9 @@ p {
 		}
 		
 #dienstblokken {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
         width: 100%;
         float: left;
@@ -413,27 +466,52 @@ p {
     }
 	
     #watkrijgje {
+        -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
+        min-width: -webkit-calc(50% - 15px);
         min-width: calc(50% - 15px);
+        max-width: -webkit-calc(50% - 15px);
         max-width: calc(50% - 15px);
 		margin-right:15px;
     }
     
 	#prijsboek {
+        -webkit-flex-basis: 50%;
+        -ms-flex-preferred-size: 50%;
         flex-basis: 50%;
+        min-width: -webkit-calc(50% - 15px);
         min-width: calc(50% - 15px);
+        max-width: -webkit-calc(50% - 15px);
         max-width: calc(50% - 15px);
 		margin-left:15px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     
 		#prijsblok {
+			height: -webkit-calc(50% - 15px);
 			height: calc(50% - 15px);
 			width: 100%;
 			margin-bottom:30px;		
+			display: -webkit-box;		
+			display: -webkit-flex;		
+			display: -ms-flexbox;		
 			display: flex;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			-ms-flex-align: center;
 			align-items: center;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
 			justify-content: center;
 		}
 		
@@ -443,10 +521,20 @@ p {
 			}
 		
 		#boeken {
+			height: -webkit-calc(50% - 15px);
 			height: calc(50% - 15px);
 			width: 100%;		
+			display: -webkit-box;		
+			display: -webkit-flex;		
+			display: -ms-flexbox;		
 			display: flex;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			-ms-flex-align: center;
 			align-items: center;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
 			justify-content: center;
 			font:var(--button);
 			font-size:20px !important;
@@ -464,6 +552,12 @@ ul.opties {
 	ul.opties li i {
 		margin-right:10px;
 	}
+
+#blogafbeelding {
+	margin-top:-120px;
+	position:relative;
+	z-index:5;
+}
 
 #pakketten {
 	margin-top:-120px;
@@ -496,14 +590,31 @@ ul.opties {
 				}
 		
 #recensies {
-	background:#c0c0c0;
+	background-image:url(https://www.maaikehogebrug.nl/v3/wp-content/uploads/2017/12/dominique-anouk.jpg);
+	-webkit-background-size:cover;
+	background-size:cover;
+	background-position:center center;
+	position:relative;
+	z-index:1;
 }
+
+	#recensies:before {
+		content:'';
+		background-color:var(--lichtGrijsOverlay);
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		z-index:0;		
+	}
 
 	.recensie {
 		text-align:justify;
 	}
 	
 		.recensie-afbeelding {
+			-webkit-background-size:cover;
 			background-size:cover;
 			background-position:center center;
 		}
@@ -513,8 +624,41 @@ ul.opties {
 			}
 	
 		.recensie-waardering i {
-			color:var(--grijs);
+			color:#ffbf00;
+			font-size:16px !important;
 		}
+		
+/* FOOTER */
+footer {
+	color:var(--grijs);
+	background:var(--wit);
+}
+
+footer h3 {
+	margin-bottom:15px;
+}
+
+footer ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+	footer ul li {
+	}
+
+footer a {
+	color:var(--grijs);	
+}
+
+footer i {
+	opacity:.6;
+}
+
+#img-maaike {
+	border-radius:50%;
+	max-width:50%;
+}
 
 /* PORTFOLIO */
 #portfolio a {
@@ -539,6 +683,10 @@ ul.opties {
 }
 		
 @media (max-width:544px){	
+	body {
+		padding-top:45px;
+	}
+	
 	#header {
 		height:100%;
 		padding:30px 0;
@@ -554,17 +702,30 @@ ul.opties {
 		margin-bottom:0;
 	}
 	
-	.scroll-btn .mouse {
-		margin-top:30px;
-		border-radius:5px;
+	#doorkiesblokken .owl-stage {
+		padding-left:15px !important;
 	}
 }
 
 @media (max-width:768px){
+body {
+	padding-top:60px;
+}
+
+#navigatie {
+	width: 100%;
+	margin:0;
+	padding:0 15px;
+	background:#fff;
+	-webkit-box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
+	box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
+}
+
 	.navbar {
 		padding:0;
-		background:#fff;
+		-webkit-box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
 		box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
+		height:60px;
 	}
 	
 		.navbar .row {
@@ -590,6 +751,11 @@ ul.opties {
 			font-size:10px;
 			text-transform:uppercase;
 			font-weight:500;
+		}
+		
+		.navbar i {
+			color:var(--grijs);
+			font-size:24px;
 		}
 	
 	#intro {
@@ -640,32 +806,3 @@ ul.opties {
 		margin-top:30px;
 	}
 }
-
-.owl-carousel,.owl-carousel .owl-item{-webkit-tap-highlight-color:transparent;position:relative}.owl-carousel{display:none;width:100%;z-index:1}.owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y;-moz-backface-visibility:hidden}.owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}.owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0,0,0)}.owl-carousel .owl-item,.owl-carousel .owl-wrapper{-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0)}.owl-carousel .owl-item{min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-touch-callout:none}.owl-carousel .owl-item img{display:block;width:100%}.owl-carousel .owl-dots.disabled,.owl-carousel .owl-nav.disabled{display:none}.no-js .owl-carousel,.owl-carousel.owl-loaded{display:block}.owl-carousel .owl-dot,.owl-carousel .owl-nav .owl-next,.owl-carousel .owl-nav .owl-prev{cursor:pointer;cursor:hand;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-loading{opacity:0;display:block}.owl-carousel.owl-hidden{opacity:0}.owl-carousel.owl-refresh .owl-item{visibility:hidden}.owl-carousel.owl-drag .owl-item{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-grab{cursor:move;cursor:grab}.owl-carousel.owl-rtl{direction:rtl}.owl-carousel.owl-rtl .owl-item{float:right}.owl-carousel .animated{animation-duration:1s;animation-fill-mode:both}.owl-carousel .owl-animated-in{z-index:0}.owl-carousel .owl-animated-out{z-index:1}.owl-carousel .fadeOut{animation-name:fadeOut}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.owl-height{transition:height .5s ease-in-out}.owl-carousel .owl-item .owl-lazy{opacity:0;transition:opacity .4s ease}.owl-carousel .owl-item img.owl-lazy{transform-style:preserve-3d}.owl-carousel .owl-video-wrapper{position:relative;height:100%;background:#000}.owl-carousel .owl-video-play-icon{position:absolute;height:80px;width:80px;left:50%;top:50%;margin-left:-40px;margin-top:-40px;background:url(owl.video.play.png) no-repeat;cursor:pointer;z-index:1;-webkit-backface-visibility:hidden;transition:transform .1s ease}.owl-carousel .owl-video-play-icon:hover{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}.owl-carousel .owl-video-playing .owl-video-play-icon,.owl-carousel .owl-video-playing .owl-video-tn{display:none}.owl-carousel .owl-video-tn{opacity:0;height:100%;background-position:center center;background-repeat:no-repeat;background-size:contain;transition:opacity .4s ease}.owl-carousel .owl-video-frame{position:relative;z-index:1;height:100%;width:100%}
-
-.owl-stage {
-	padding-bottom:10px;
-}
-
-.owl-nav {
-	display:flex;
-	flex-direction:row;
-	align-items:center;
-	justify-content:center;
-	align-content:center;
-	margin-top:20px;
-}
-
-	.owl-nav div {
-		margin:0 15px;
-		transition:all 0.3s ease;
-	}
-	
-		.owl-nav .disabled {
-			opacity:0.4;
-		}
-	
-		.owl-nav i {
-			font-size:30px;
-			color:var(--grijs);
-		}

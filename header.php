@@ -29,31 +29,35 @@ if(is_singular('portfolio')){
 
 <body <?php body_class(); ?>>
 
-<section class="container-fluid fixed-top animatie" id="navigatie">
+<div class="container-fluid fixed-top animatie" id="navigatie">
     <nav class="navbar navbar-expand-md navbar-fixed-top d-flex justify-content-center p-0">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="navbar-toggler-icon pull-right">
-                <i class="fa fa-align-right" aria-hidden="true" style="font-size:24px;"></i>
-                <span id="menu">Menu</span>
-            </span>
-        </button>
+        
+        <div id="social" class="d-flex align-items-center mr-auto d-md-none">
+        	<i class="fa fa-fw fa-whatsapp" aria-hidden="true"></i>
+            <i class="fa fa-fw fa-phone" aria-hidden="true"></i>
+        </div>
+		
+		<svg class="navbar-brand logo-mob animatie d-md-none" xmlns="http://www.w3.org/2000/svg" width="73" height="72" viewBox="0 0 73.2 72.3"><path d="M31.2 64.7C20.3 49 5.7 31.9 11.2 11.6c-2.1 1.2-4.1 2.3-6.2 3.5 12 2.4 18.3 8.7 22.3 20 1.5 4.3 8.9 5.5 9.8 0 1.2-7.4 4.8-13.4 10.1-18.8 7-7.2 14.7-8.8 15.2 3.3 0.4 9.7-11.2 19.1-17.4 25.1C38.7 50.8 31.9 56.4 26.2 63c-4.4 5.2 3.1 12.7 7.5 7.5 13.9-16.5 51.7-38.7 35.6-65 -5.2-8.4-16-5.7-22.9-1.5 -9.8 5.9-17.3 17.3-19 28.5 3.3 0 6.5 0 9.8 0C31.9 17.8 23.3 8.5 7.7 5.4 5 4.9 2.3 6.1 1.5 8.9c-6.4 23.8 9 42.1 22.5 60C27.1 73.1 34.3 69.2 31.2 64.7L31.2 64.7z" /></svg>
+        
+
+        <div id="burger" class="d-flex align-items-center ml-auto d-md-none">
+        	<i class="fa fa-align-right" aria-hidden="true" style="font-size:24px;" data-toggle="offcanvas"></i>
+		</div>
     
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse offcanvas-collapse">
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'hoofdmenu-links',
                 'menu_id'        => 'hoofdmenu-links',
                 'container'      => false,
                 'depth'          => 2,
-                'menu_class'     => 'nav navbar-nav ml-auto navigatieLijst',
+                'menu_class'     => 'navbar-nav ml-auto navigatieLijst',
                 'walker'         => new Bootstrap_NavWalker(),
                 'fallback_cb'    => 'Bootstrap_NavWalker::fallback',
             ) );
             ?>
             
-            <a class="navbar-brand" href="#">
-                <img src="https://www.maaikehogebrug.nl/v3/wp-content/themes/mh/images/maaike-hogebrug-fotografie.png" width="30" height="30" alt="Maaike Hogebrug Fotografie">
-            </a>
+            <svg class="navbar-brand logo-desk animatie d-none d-md-block" xmlns="http://www.w3.org/2000/svg" width="73" height="72" viewBox="0 0 73.2 72.3"><path d="M31.2 64.7C20.3 49 5.7 31.9 11.2 11.6c-2.1 1.2-4.1 2.3-6.2 3.5 12 2.4 18.3 8.7 22.3 20 1.5 4.3 8.9 5.5 9.8 0 1.2-7.4 4.8-13.4 10.1-18.8 7-7.2 14.7-8.8 15.2 3.3 0.4 9.7-11.2 19.1-17.4 25.1C38.7 50.8 31.9 56.4 26.2 63c-4.4 5.2 3.1 12.7 7.5 7.5 13.9-16.5 51.7-38.7 35.6-65 -5.2-8.4-16-5.7-22.9-1.5 -9.8 5.9-17.3 17.3-19 28.5 3.3 0 6.5 0 9.8 0C31.9 17.8 23.3 8.5 7.7 5.4 5 4.9 2.3 6.1 1.5 8.9c-6.4 23.8 9 42.1 22.5 60C27.1 73.1 34.3 69.2 31.2 64.7L31.2 64.7z" /></svg>
             
             <?php
             wp_nav_menu( array(
@@ -61,11 +65,11 @@ if(is_singular('portfolio')){
                 'menu_id'        => 'hoofdmenu-rechts',
                 'container'      => false,
                 'depth'          => 2,
-                'menu_class'     => 'nav navbar-nav mr-auto navigatieLijst',
+                'menu_class'     => 'navbar-nav mr-auto navigatieLijst',
                 'walker'         => new Bootstrap_NavWalker(),
                 'fallback_cb'    => 'Bootstrap_NavWalker::fallback',
             ) );
             ?>
         </div>
     </nav>
-</section>
+</div>

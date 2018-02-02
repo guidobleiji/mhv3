@@ -9,7 +9,7 @@ jQuery(document).ready(function(jQuery){
 		responsive:{
 			0:{
 				items:1,
-				stagePadding: 15
+				stagePadding: 30
 			},
 			575:{
 				items:2,
@@ -62,6 +62,12 @@ jQuery(document).ready(function(jQuery){
 		}
 	});
 	
+	jQuery('.carrousel-recensies').owlCarousel({
+		loop:false,
+		autoplay:true,
+		items:1
+	});
+	
 	jQuery('#portfolio').prepend('<div class="grid-sizer"></div>');	
 	
 	var $grid = jQuery('#portfolio').masonry({
@@ -73,6 +79,11 @@ jQuery(document).ready(function(jQuery){
 	$grid.imagesLoaded().progress( function() {
 		$grid.masonry();
 	});
+	
+	window.sr = ScrollReveal({ distance: '90px', origin: 'bottom'});
+	sr.reveal('#doorkiesblokken .owl-item', 60);
+	sr.reveal('#uitgelicht-werk .col', 60);
+	sr.reveal('.recensie .fa-star', 60);
 });
 
 
@@ -85,3 +96,10 @@ jQuery(window).scroll(function() {
         jQuery("#navigatie").animate().removeClass("scroll");
     }
 });
+
+jQuery(function () {
+  'use strict'
+  jQuery('[data-toggle="offcanvas"]').on('click', function () {
+    jQuery('.offcanvas-collapse').toggleClass('open')
+  })
+})

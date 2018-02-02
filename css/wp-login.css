@@ -1,0 +1,94 @@
+html {
+    text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+	--groen:#4e9090;
+	--groenOverlay:rgba(78,144,144,.8);
+	--grijs:#454545;
+	--grijsOverlay:rgba(69,69,69,.8);
+	--lichtGrijs:#dcdcdc;
+	--lichtGrijsOverlay:rgba(220,220,220,.8);
+	--wit:#ffffff;
+	--witOverlay:rgba(255,255,255,.8);
+	
+	--navigatie:300 18px/18px 'Nunito', sans-serif;
+	--paragraaf:200 18px/36px 'Nunito', sans-serif;
+	--paragraafKlein:300 16px/30px 'Nunito', sans-serif;
+	--kleinDik:700 13px/13px 'Nunito', sans-serif;
+	--button:700 13px/30px 'Nunito', sans-serif;
+	--prijs:900 40px/40px 'Nunito', sans-serif;
+}
+
+body {
+	background-image:url(../images/login-bg.jpg);
+	background-size:cover;
+	font:400 18px/36px 'Arial', sans-serif;
+	color:#fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#login {
+	padding:0 !important;
+	top:-60px !important;
+	position:relative !important;
+}
+
+#nav,
+#backtoblog {
+	display:none;
+}
+
+p a {
+	color:var(--wit) !important;
+	text-decoration:none !important;
+}
+
+.login form {
+	padding:30px !important;
+}
+
+#loginform {
+	border-radius:15px !important;
+	overflow:hidden !important;
+	box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05) !important;
+	margin-top:30px !important;
+}
+
+.login h1 a {
+    background-image: url(../images/maaike-hogebrug-fotografie.png);
+    background-position: center center;
+	background-size:auto !important;
+    background-repeat: no-repeat;
+    height: 30px !important;
+    width: 100% !important;
+	margin:0;
+	padding:0;
+    text-indent: -9999px;
+    outline: 0;
+    display: block;
+}
+
+#wp-submit {
+	color:var(--wit) !important;
+	background:var(--grijs) !important;
+	font:var(--kleinDik) !important;
+	text-transform:uppercase !important;
+	padding:0 15px !important;
+	border-radius:10px !important;
+	display:inline-block !important;
+	height:30px !important;
+	line-height:30px !important;
+	text-decoration:none !important;
+	border:none !important;
+	box-shadow:none !important;
+	text-shadow:none !important;
+}
+
+	#wp-submit:hover {
+		background:var(--grijsOverlay);	
+	}
