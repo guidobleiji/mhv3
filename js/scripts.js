@@ -9,24 +9,18 @@ jQuery(document).ready(function(jQuery){
 		responsive:{
 			0:{
 				items:1,
-				stagePadding: 30
+				stagePadding: 45
 			},
 			575:{
 				items:2,
-				stagePadding: 15
-			},
-			767:{
-				items:2,
-				stagePadding: 15
+				stagePadding: 45
 			},
 			991:{
-				items:2
+				items:3,
+				stagePadding: 45
 			},
 			1199:{
 				items:3
-			},
-			1366:{
-				items:4
 			}
 		}
 	});
@@ -34,6 +28,7 @@ jQuery(document).ready(function(jQuery){
 	jQuery('.carrousel-pakketten').owlCarousel({
 		loop:false,
 		margin:30,
+		stagePadding:15,
 		nav: true,
 		navText: ["<i class='fa fa-chevron-circle-left'></i>","<i class='fa fa-chevron-circle-right'></i>"],
 		responsiveClass:true,
@@ -58,6 +53,32 @@ jQuery(document).ready(function(jQuery){
 			},
 			1366:{
 				items:4
+			}
+		}
+	});
+	
+	jQuery('.carrousel-uitgelichtwerk').owlCarousel({
+		loop:false,
+		margin:30,
+		stagePadding:15,
+		nav: true,
+		navText: ["<i class='fa fa-chevron-circle-left'></i>","<i class='fa fa-chevron-circle-right'></i>"],
+		responsiveClass:true,
+		responsive:{
+			0:{
+				items:1,
+				stagePadding: 45
+			},
+			575:{
+				items:2,
+				stagePadding: 45
+			},
+			991:{
+				items:3,
+				stagePadding: 45
+			},
+			1199:{
+				items:3
 			}
 		}
 	});

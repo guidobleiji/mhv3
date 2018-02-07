@@ -57,26 +57,22 @@ get_header();?>
         
         <section class="container-fluid mb-90" id="uitgelicht-werk">
             <div class="row">
-                <div class="col col-sm-4">
-                    <a href="https://www.maaikehogebrug.nl/" class="animatie schaduw br draai groenoverlay portfolio-item">
-                        <figure class="mb-0">
-                            <img src="https://www.maaikehogebrug.nl/wp-content/uploads/2016/10/MH_Milan-1_sp-660x440.jpg" class="img-fluid" />
-                        </figure>
-                    </a>
+                <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                    <h2>Uitgelicht werk</h2>
                 </div>
-                <div class="col col-sm-4">
-                    <a href="https://www.maaikehogebrug.nl/" class="animatie schaduw br draai groenoverlay portfolio-item">
-                        <figure class="mb-0">
-                            <img src="https://www.maaikehogebrug.nl/wp-content/uploads/2016/10/MH_Milan-1_sp-660x440.jpg" class="img-fluid" />
-                        </figure>
-                    </a>
-                </div>
-                <div class="col col-sm-4">
-                    <a href="https://www.maaikehogebrug.nl/" class="animatie schaduw br draai groenoverlay portfolio-item">
-                        <figure class="mb-0">
-                            <img src="https://www.maaikehogebrug.nl/wp-content/uploads/2016/10/MH_Milan-1_sp-660x440.jpg" class="img-fluid" />
-                        </figure>
-                    </a>
+                
+                <div class="owl-carousel carrousel-uitgelichtwerk">
+					<?php
+                    $uitgelichtWerk = get_field('home_uitgelicht_werk');		
+                    foreach($uitgelichtWerk as $uitgelichteAfbeelding){
+                        $afbeelding = $uitgelichteAfbeelding['home_uitgelichte_afbeelding'];
+                        echo '<a href="'.$afbeelding['original_image']['url'].'" class="animatie schaduw br draai groenoverlay portfolio-item">';
+                            echo '<figure class="mb-0">';
+                                echo '<img src="'.$afbeelding['url'].'" class="img-fluid" alt="'.get_field('dienst_titel').' fotografie" width="'.$afbeelding['width'].'" height="'.$afbeelding['height'].'" />';
+                            echo '</figure>';
+                        echo '</a>';
+                    }
+                    ;?>
                 </div>
             </div>
         </section>

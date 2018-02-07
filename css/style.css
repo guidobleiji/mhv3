@@ -203,10 +203,6 @@ p {
 		margin-bottom:0;
 	}
 	
-article a {
-	box-shadow: inset 0 -8px 0 #ffea96;
-}
-	
 ul,
 ol {
 	margin:0 0 60px 0;
@@ -702,7 +698,9 @@ footer i {
 		margin-bottom:0;
 	}
 	
-	#doorkiesblokken .owl-stage {
+	#doorkiesblokken .owl-stage,
+	#pakketten .owl-stage,
+	#uitgelicht-werk .owl-stage {
 		padding-left:15px !important;
 	}
 }
@@ -767,6 +765,12 @@ body {
 			font-size:45px;
 			margin-bottom:45px;
 		}
+		
+	#doorkiesblokken .owl-stage,
+	#pakketten .owl-stage,
+	#uitgelicht-werk .owl-stage {
+		padding-left:15px !important;
+	}
 	
 	.mb-mob-30 {
 		margin-bottom:30px !important;
@@ -790,6 +794,12 @@ body {
 	
 	.scroll-btn .mouse {
 		border-radius:5px;
+	}
+	
+	#doorkiesblokken .owl-stage,
+	#pakketten .owl-stage,
+	#uitgelicht-werk .owl-stage {
+		padding-left:15px !important;
 	}
 }
 
