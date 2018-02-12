@@ -26,7 +26,7 @@ class Bootstrap_NavWalker extends Walker_Nav_Menu {
 		// Use the current menu id generated via start_el()
 		$current_menu_id = $this->current_menu_id_bootstrap;
 		// Assign the dynamic id for use inside the dropdown menu, ie, sub-menu for Bootstrap
-		$id = 'id="navbar-dropdown-menu-link-' . $current_menu_id->ID . '"';
+		$id = 'id="navbar-dropdown-menu-link2-' . $current_menu_id->ID . '"';
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 			$t = '';
 			$n = '';

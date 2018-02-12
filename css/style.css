@@ -25,6 +25,14 @@ img {
 	--kleinDik:700 13px/13px 'Nunito', sans-serif;
 	--button:700 13px/30px 'Nunito', sans-serif;
 	--prijs:900 40px/40px 'Nunito', sans-serif;
+	
+	--0:0;
+	--15:15px;
+	--30:30px;
+	--45:45px;
+	--60:60px;
+	--90:90px;
+	--120:120px;
 }
 
 /* UTILITIES */
@@ -41,53 +49,66 @@ img {
 	overflow:hidden;
 }
 
-.p-30 {
-	padding:30px;
+.p-0 {
+	padding:var(--0);
 }
 
-.p-45 {
-	padding:45px;
-}
-
-.p-60 {
-	padding:60px;
-}
-
-.p-90 {
-	padding-top:90px;
-	padding-bottom:90px;
-}
+	.p-30 {
+		padding:var(--30);
+	}
+	
+	.p-45 {
+		padding:var(--45);
+	}
+	
+	.p-60 {
+		padding:var(--60);
+	}
+	
+	.p-90 {
+		padding-top:var(--90);
+		padding-bottom:var(--90);
+	}
+	
+	.ph-120 {
+		padding-top:var(--120);
+		padding-bottom:var(--120);
+	}
 
 .m-0 {
 	margin:0;
 }
 
 	.mt-0 {
-		margin-top:0;
+		margin-top:var(--0);
 	}
 	
 	.mt-30 {
-		margin-top:30px;
+		margin-top:var(--30);
 	}
 
 	.mb-0 {
-		margin-bottom:0;
+		margin-bottom:var(--0);
 	}
 
 	.mb-30 {
-		margin-bottom:30px;
+		margin-bottom:var(--30);
 	}
 
 	.mb-60 {
-		margin-bottom:60px;
+		margin-bottom:var(--60);
 	}
 	
 	.mb-90 {
-		margin-bottom:90px;
+		margin-bottom:var(--90);
 	}
 	
 	.mb-120 {
-		margin-bottom:120px;
+		margin-bottom:var(--120);
+	}
+	
+	.mt--120 {
+		margin-top:calc(-1 * var(--120));
 	}
 
 .schaduw {
@@ -166,6 +187,19 @@ li.show {
 	position:relative;
 }
 
+p:empty {
+	display:none;
+}
+
+article img {
+	max-width:100% !important;
+	height:auto !important;
+}
+
+strong {
+	font-weight:700;
+}
+
 /* BASIS */
 body {
 	margin:0;
@@ -175,38 +209,53 @@ body {
 }
 
 /* TYPOGRAFIE */
-h1.koptitel {
+h1 {
 	color:var(--groen);
 	font:700 60px/60px 'Amatic SC', cursive;
-	margin-bottom:60px;
+	margin-bottom:var(--60);
 	text-transform:lowercase;
 }
 
 h2 {
 	color:var(--grijs);
 	font:700 20px/20px 'Nunito', sans-serif;
-	margin-bottom:30px;
+	margin-bottom:var(--30);
 }
 
 h3 {
 	color:var(--grijs);
 	font:600 18px/18px 'Nunito', sans-serif;
-	margin-bottom:30px;
+	margin-bottom:var(--30);
 }
 
 p {
-	margin-bottom:60px;
+	margin-bottom:var(--60);
 	letter-spacing:0.03em;
 }
 
 	p:last-of-type {
-		margin-bottom:0;
+		margin-bottom:0 !important;
 	}
 	
 ul,
 ol {
-	margin:0 0 60px 0;
+	margin:0 0 var(--60) 0;
 }
+
+ol {
+	padding:0;
+	list-style-type:none;
+	counter-reset: section;
+}
+
+	ol li:before {
+		counter-increment: section;
+		content: counter(section);
+		display:inline-block;
+		color:var(--groen);
+		font:var(--kleinDik);
+		margin-right:7.5px;
+	}
 
 /* ELEMENTEN */
 #navigatie {
@@ -251,6 +300,7 @@ ol {
 	#navigatie .dropdown-menu {
 		margin-top:22px;
 		padding-top:0;
+		padding-bottom:0;
 		left:-30px;
 		background:#fff;
 		z-index:5;
@@ -302,10 +352,10 @@ ol {
 	background-position:center center;
 	position:relative;
 	z-index:1;
+	text-align:center;
 	padding-top:120px;
 	padding-bottom:120px;
 	margin-bottom:60px;
-	text-align:center;
 }
 
 	#intro:before {
@@ -344,10 +394,6 @@ ol {
 		text-decoration:underline;
 		text-decoration-skip:ink;
 	}
-
-#doorkiesblokken {
-	margin-top:-120px;
-}
 
 .meer-informatie,
 .gform_button {
@@ -438,14 +484,15 @@ ol {
 	
 		.blok header span {
 			display:block;
-			margin:7.5px 0 30px 0;
+			margin:7.5px 0 var(--30) 0;
 			color:var(--groen);
 			font:var(--kleinDik);
 			letter-spacing:0.05em;
 			text-transform:uppercase;
 		}
 		
-		.blok:hover .meer-informatie:after {
+		.blok:hover .meer-informatie:after,
+		.meer-informatie:hover:after {
 			left:10px;
 		}
 		
@@ -584,6 +631,40 @@ ul.opties {
 				.pakket ul li:nth-child(odd) {
 					background:#f8f8f8;
 				}
+				
+#faq {
+	margin-top:-120px;
+}
+
+	.vraag ul {
+			list-style-type:none;
+			padding:0;
+		}
+		
+			.vraag ul > li {
+				padding:7.5px 30px;
+				width:100%;
+			}
+			
+				.vraag ul li:hover {
+					cursor:pointer;
+				}
+			
+				.vraag ul li:nth-child(odd) {
+					background:#f8f8f8;
+				}
+				
+				.vraag ul li div {
+					display:none;
+				}
+				
+					.vraag ul li div.actief {
+						display:block;
+					}
+					
+					.vraag ul li div p {
+						margin-bottom:30px;
+					}
 		
 #recensies {
 	background-image:url(https://www.maaikehogebrug.nl/v3/wp-content/uploads/2017/12/dominique-anouk.jpg);
@@ -657,67 +738,47 @@ footer i {
 }
 
 /* PORTFOLIO */
-#portfolio a {
-	float:left;
-	width:100%;
+#masonry {
+	margin-bottom:-30px;
 }
 
-.grid-sizer,
-.mas-item {
-	width:25%;
-}
-
-.mas-item {
-	float:left;
-	border:15px solid #f0f0f0;
-}
-
-.mas-item img {
-	display:block;
-	max-width:100%;
-	min-width:100%;
-}
-		
-@media (max-width:544px){	
-	body {
-		padding-top:45px;
+	.mas-item {
+		margin-bottom:30px;
 	}
 	
-	#header {
-		height:100%;
-		padding:30px 0;
-	}
-	
-		#header h1 {
-			font-size:48px;
-			line-height:48px;
-			margin-bottom:30px;
+		.mas-item img {
+			display:block;
+			max-width:100%;
+			min-width:100%;
 		}
-	
-	.intro p:first-of-type {
-		margin-bottom:0;
-	}
-	
-	#doorkiesblokken .owl-stage,
-	#pakketten .owl-stage,
-	#uitgelicht-werk .owl-stage {
-		padding-left:15px !important;
-	}
+		
+@media (max-width:767px){
+:root {	
+	--15:7.5px;
+	--30:15px;
+	--45:30px;
+	--60:30px;
+	--90:45px;
+	--120:60px;
 }
 
-@media (max-width:768px){
-body {
-	padding-top:60px;
+p {
+	margin-bottom:var(--45);
+	letter-spacing:0;
 }
 
 #navigatie {
 	width: 100%;
 	margin:0;
-	padding:0 15px;
+	padding:0;
 	background:#fff;
 	-webkit-box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
 	box-shadow:0px 3px 15px 0px rgba(0, 0, 0, 0.05);
 }
+
+	#navigatie nav {
+		padding:0 15px !important;
+	}
 
 	.navbar {
 		padding:0;
@@ -755,64 +816,84 @@ body {
 			color:var(--grijs);
 			font-size:24px;
 		}
-	
-	#intro {
-		padding-top:30px;
-		padding-bottom:180px;
-	}
-	
-		.intro h1 {
-			font-size:45px;
-			margin-bottom:45px;
-		}
 		
-	#doorkiesblokken .owl-stage,
-	#pakketten .owl-stage,
-	#uitgelicht-werk .owl-stage {
-		padding-left:15px !important;
+	#intro {
+		padding-top:60px;
+		padding-bottom:90px;
 	}
 	
-	.mb-mob-30 {
-		margin-bottom:30px !important;
+	#doorkiesblokken {
+		margin-top:-120px;
+	}
+		
+		#doorkiesblokken .owl-stage,
+		#uitgelicht-werk .owl-stage,
+		#pakketten .owl-stage {
+			padding-left:15px !important;
+		}
+	
+	.recensie header {
+		display:block !important;
+		float:left;
+		width:100%;
 	}
 	
 	.recensie-afbeelding {
-		background-image:none !important;
+		display:none;
+	}
+		
+	.recensie-waardering {
+		margin-top:7.5px !important;
 	}
 	
-		.recensie-afbeelding img {
-			display:block;
-			min-width:100%;
-		}
-}
-
-@media (min-width: 545px) and (max-width:992px){
-	#header {
-		height:100%;
-		padding:60px 0;
-	}
-	
-	.scroll-btn .mouse {
-		border-radius:5px;
-	}
-	
-	#doorkiesblokken .owl-stage,
-	#pakketten .owl-stage,
-	#uitgelicht-werk .owl-stage {
-		padding-left:15px !important;
-	}
-}
-
-@media (min-width: 993px) and (max-width:1200px){
-	#header {
-		padding:30px 0;
-	}
-	
-	.intro p {
+	footer .col-xs-12 {
 		margin-bottom:30px;
 	}
 	
-	.scroll-btn .mouse {
-		margin-top:30px;
+		footer .col-xs-12 h2 {
+			margin-bottom:0;
+		}
+}
+
+@media (max-width: 359px) {
+	body {
+		padding-top:30px;
 	}
+	
+	h1 {
+		font: 700 45px/45px 'Amatic SC', cursive;
+	}
+
+	.grid-sizer,
+	.mas-item {
+		width:calc(100% - 30px);
+		margin-left:15px;
+		margin-right:15px;
+	}
+}
+
+@media (min-width: 360px) and (max-width:575px){
+	body {
+		padding-top:30px;
+	}
+	
+	h1 {
+		font: 700 45px/45px 'Amatic SC', cursive;
+	}
+}
+
+@media (min-width: 576px) and (max-width:767px){
+
+}
+
+@media (min-width: 768px) and (max-width:991px){
+	
+}
+
+@media (min-width: 992px) and (max-width:1199px){
+	
+}
+
+@media (min-width: 1200px){
+	
 }

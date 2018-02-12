@@ -1,5 +1,5 @@
 jQuery(document).ready(function(jQuery){		
-	jQuery('.carrousel-doorkiesblokken').owlCarousel({
+	jQuery('.carrousel-doorkiesblokken, .carrousel-uitgelichtwerk').owlCarousel({
 		loop:true,
 		margin:30,
 		stagePadding: 120,
@@ -9,7 +9,7 @@ jQuery(document).ready(function(jQuery){
 		responsive:{
 			0:{
 				items:1,
-				stagePadding: 45
+				stagePadding: 37.5
 			},
 			575:{
 				items:2,
@@ -35,7 +35,7 @@ jQuery(document).ready(function(jQuery){
 		responsive:{
 			0:{
 				items:1,
-				stagePadding: 15
+				stagePadding: 37.5
 			},
 			575:{
 				items:2,
@@ -57,54 +57,32 @@ jQuery(document).ready(function(jQuery){
 		}
 	});
 	
-	jQuery('.carrousel-uitgelichtwerk').owlCarousel({
-		loop:false,
-		margin:30,
-		stagePadding:15,
-		nav: true,
-		navText: ["<i class='fa fa-chevron-circle-left'></i>","<i class='fa fa-chevron-circle-right'></i>"],
-		responsiveClass:true,
-		responsive:{
-			0:{
-				items:1,
-				stagePadding: 45
-			},
-			575:{
-				items:2,
-				stagePadding: 45
-			},
-			991:{
-				items:3,
-				stagePadding: 45
-			},
-			1199:{
-				items:3
-			}
-		}
-	});
-	
 	jQuery('.carrousel-recensies').owlCarousel({
 		loop:false,
 		autoplay:true,
 		items:1
 	});
 	
-	jQuery('#portfolio').prepend('<div class="grid-sizer"></div>');	
-	
-	var $grid = jQuery('#portfolio').masonry({
-		itemSelector: '.mas-item',
-		percentPosition: true,
-		columnWidth: '.grid-sizer'
-	});
-	
-	$grid.imagesLoaded().progress( function() {
-		$grid.masonry();
-	});
-	
 	window.sr = ScrollReveal({ distance: '90px', origin: 'bottom'});
 	sr.reveal('#doorkiesblokken .owl-item', 60);
 	sr.reveal('#uitgelicht-werk .col', 60);
 	sr.reveal('.recensie .fa-star', 60);
+	
+	jQuery('.portfolio-item').featherlightGallery();
+	
+	jQuery('.vraag ul li').click(function(){
+		jQuery(this).find('div').toggleClass('actief');
+	});
+	
+	var $container = jQuery('#masonry');
+	$container.imagesLoaded( function(){
+		$container.masonry({
+			itemSelector : '.mas-item',
+			columnWidth: '.grid-sizer',
+			percentPosition: true,
+			gutterWidth: 0
+		});
+	});
 });
 
 

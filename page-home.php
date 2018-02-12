@@ -9,7 +9,7 @@ get_header();?>
         <section class="container-fluid" id="intro">
             <div class="row">
                 <div class="col offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 intro">
-                    <header><h1 class="koptitel">Maaike Hogebrug Fotografie</h1></header>
+                    <h1>Maaike Hogebrug Fotografie</h1>
                     <?php the_field('home_intro');?>
                 </div>
             </div>
@@ -26,19 +26,19 @@ get_header();?>
                         while($diensten->have_posts())
                         {
                             $diensten->the_post();
-							echo '<section class="blok animatie schaduw br draai">';
+							echo '<div class="blok animatie schaduw br draai">';
 								echo '<figure>';
-									echo '<img src="'.get_field('dienst_afbeelding').'" class="img-fluid" />';
+									echo '<img src="'.get_field('dienst_afbeelding').'" alt="'.get_field('dienst_titel').' fotografie" title="'.get_field('dienst_titel').' fotografie" class="img-fluid" />';
 								echo '</figure>';
 								echo '<div class="p-30">';
 									echo '<header>';
-										echo '<h1 class="mb-0">'.get_field('dienst_titel').'</h1>';
+										echo '<h2 class="mb-0">'.get_field('dienst_titel').'</h2>';
 										echo '<span>Vanaf €'.get_field('dienst_vanaf').'</span>';
 									echo '</header>';
 									echo '<p class="mb-30">'.get_field('dienst_intro').'</p>';
 									echo '<p><a href="'.get_permalink().'" class="meer-informatie animatie">Meer informatie</a></p>';
 								echo '</div>';
-							echo '</section>';
+							echo '</div>';
                         }
                     echo '</div>';
                 echo '</div>';
@@ -68,7 +68,7 @@ get_header();?>
                         $afbeelding = $uitgelichteAfbeelding['home_uitgelichte_afbeelding'];
                         echo '<a href="'.$afbeelding['original_image']['url'].'" class="animatie schaduw br draai groenoverlay portfolio-item">';
                             echo '<figure class="mb-0">';
-                                echo '<img src="'.$afbeelding['url'].'" class="img-fluid" alt="'.get_field('dienst_titel').' fotografie" width="'.$afbeelding['width'].'" height="'.$afbeelding['height'].'" />';
+                                echo '<img src="'.$afbeelding['url'].'" class="img-fluid" alt="Maaike Hogebrug Fotografie" title="Maaike Hogebrug Fotografie" width="'.$afbeelding['width'].'" height="'.$afbeelding['height'].'" />';
                             echo '</figure>';
                         echo '</a>';
                     }
@@ -88,11 +88,11 @@ get_header();?>
                         while($recensies->have_posts())
                         {
                             $recensies->the_post();
-                            echo '<section class="blok animatie schaduw br d-md-flex recensie">';
+                            echo '<div class="blok animatie schaduw br d-md-flex recensie">';
                                 echo '<div class="col col-xl-4 p-0 recensie-afbeelding" style="background-image:url('.get_field('recensie_foto').');"></div>';
                                 echo '<div class="col col-xl-8 p-30 align-self-center">';
                                     echo '<header class="d-flex align-items-center mb-30">';
-                                        echo '<h1 class="m-0">'.get_field('recensie_naam').'</h1>';
+                                        echo '<h2 class="m-0">'.get_field('recensie_naam').'</h2>';
                                         echo '<span class="m-0 ml-auto pull-right align-self-center recensie-waardering">';
                                             if(get_field('recensie_waardering') == '4 sterren'){
                                                 echo '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>';
@@ -106,9 +106,9 @@ get_header();?>
                                         echo '</span>';
                                     echo '</header>';
                                     echo '<p class="mb-30">'.get_field('recensie_bericht').'</p>';
-                                    echo '<p><a href="'.get_permalink(243).'" class="meer-informatie animatie">Alle recensies</a></p>';
+                                    echo '<p><a href="'.get_post_type_archive_link('recensie').'" class="meer-informatie animatie">Alle recensies</a></p>';
                                 echo '</div>';
-                            echo '</section>';
+                            echo '</div>';
                         }
                     }
                     wp_reset_query();

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link rel="canonical" href="<?php the_permalink();?>">
 <link rel="shortcut icon" href="https://www.maaikehogebrug.nl/favicon.ico" type="image/x-icon" />
 <?php
 if(is_singular('post')){
@@ -12,16 +13,32 @@ if(is_singular('post')){
 	echo '<meta property="og:url" content="'.get_permalink().'">';
 	echo '<meta property="og:type" content="article">';
 	echo '<meta property="og:title" content="'.get_field('blog_titel').'">';
-	echo '<meta property="og:image" content="'.get_field('blog_hoofdafbeelding').'">';
+	echo '<meta property="og:image" content="'.get_field('blog_afbeelding').'">';
+	echo '<meta property="og:image:alt" content="'.get_field('blog_titel').' - Maaike Hogebrug Fotografie">';
+	echo '<meta property="og:image:width" content="1110">';
+	echo '<meta property="og:image:height" content="747">';
 	echo '<meta property="og:description" content="'.get_field('blog_intro').'">';
 }
-if(is_singular('portfolio')){
+if(is_singular('fotografie')){
 	echo '<meta property="fb:app_id" content="152355671837018">';
 	echo '<meta property="og:url" content="'.get_permalink().'">';
 	echo '<meta property="og:type" content="article">';
-	echo '<meta property="og:title" content="'.get_the_title().'">';
-	echo '<meta property="og:image" content="'.get_field('portfolio_hoofdafbeelding').'">';
-	echo '<meta property="og:description" content="'.get_field('portfolio_inhoud').'">';
+	echo '<meta property="og:title" content="'.get_field('dienst_titel').' fotografie - Maaike Hogebrug Fotografie">';
+	echo '<meta property="og:image" content="'.get_field('dienst_afbeelding').'">';
+	echo '<meta property="og:image:alt" content="'.get_field('dienst_titel').' fotografie - Maaike Hogebrug Fotografie">';
+	echo '<meta property="og:image:width" content="767">';
+	echo '<meta property="og:image:height" content="513">';
+	echo '<meta property="og:description" content="'.get_field('dienst_intro').'">';
+}
+if(17 == $post->post_parent){
+	$portfolio = get_field('portfolio');
+	echo '<meta property="fb:app_id" content="152355671837018">';
+	echo '<meta property="og:url" content="'.get_permalink().'">';
+	echo '<meta property="og:type" content="article">';
+	echo '<meta property="og:title" content="'.get_field('portfolio_titel').' fotografie - Maaike Hogebrug Fotografie">';
+	echo '<meta property="og:image" content="'.$portfolio[0]['url'].'">';
+	echo '<meta property="og:image:alt" content="'.get_field('portfolio_titel').' fotografie - Maaike Hogebrug Fotografie">';
+	echo '<meta property="og:description" content="Bekijk alle foto\'s op mijn website!">';
 }
 ?>
 <?php wp_head(); ?>

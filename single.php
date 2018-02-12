@@ -28,6 +28,8 @@
             <div class="row">
                 <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">           
                     <?php the_field('blog_inhoud');?>
+                    
+                    <p><a href="<?php echo get_category_link(1) ;?>" class="meer-informatie animatie">Terug naar overzicht</a></p>
                 </div>
             </div>
         </section>
