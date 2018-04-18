@@ -32,6 +32,10 @@ body {
 	justify-content: center;
 }
 
+#login_error {
+	display:none !important;
+}
+
 #login {
 	padding:0 !important;
 	top:-60px !important;

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 intro">
                     <h1>Recensies</h1>
-                    <p>Hier komt nog een introtekst over de recensies.</p>
+                    <p>Hieronder vind je een enkele recensies van tevreden klanten.</p>
                 </div>
             </div>
         </section>
@@ -28,13 +28,13 @@
                                         echo '<h2 class="m-0">'.get_field('recensie_naam').'</h2>';
                                         echo '<span class="m-0 ml-auto pull-right align-self-center recensie-waardering">';
                                             if(get_field('recensie_waardering') == '4 sterren'){
-                                                echo '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>';
+                                                echo '<div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div>';
                                             };									
                                             if(get_field('recensie_waardering') == '4,5 sterren'){
-                                                echo '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half" aria-hidden="true"></i>';
+                                                echo '<div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star-half" aria-hidden="true"></i></div>';
                                             };									
                                             if(get_field('recensie_waardering') == '5 sterren'){
-                                                echo '<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>';
+                                                echo '<div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div><div><i class="far fa-star" aria-hidden="true"></i></div>';
                                             };									
                                         echo '</span>';
                                     echo '</header>';

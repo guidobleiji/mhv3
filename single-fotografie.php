@@ -32,7 +32,8 @@
                                     echo '<li>'.$inclusief['pakket_inclusief'].'</li>';	
                                 }
                                 echo '</ul>';
-                                echo '<p><a href="'.get_permalink(255).'?soort='.$dienstTitel.'&pakket='.$pakketTitel.'" class="meer-informatie animatie">Boek deze shoot</a></p>';
+                                echo '<p class="mb-30"><a href="'.get_permalink(255).'?soort='.$dienstTitel.'&pakket='.$pakketTitel.'" class="meer-informatie animatie">Boek deze shoot <i class="far fa-angle-right"></i></a></p>';
+								echo '<p><a href="#extra-informatie" class="extra-informatie">Extra informatie <i class="far fa-angle-down"></i></a></p>';
                             echo '</div>';
                         }
                         ;?>
@@ -43,19 +44,37 @@
         }
         ;?>
         
-        <section class="container-fluid mb-90">
+        <section class="container-fluid mb-90" id="extra-informatie">
             <div class="row">
                 <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
                     <header><h2>Extra informatie over een <span class="text-lowercase"><?php the_field('dienst_titel');?></span> fotoshoot</h2></header>
                     
-                    <h3>Voor de shoot</h3>            
-                    <?php the_field('dienst_voor');?>
+                    <?php
+                    if(get_field('dienst_kleding')){
+						echo '<h3><i class="far fa-diagnoses"></i> Kleding</h3>';
+                    	echo ''.get_field('dienst_kleding').'';
+					}
+					
+					if(get_field('dienst_voor')){
+						echo '<h3><i class="far fa-fw fa-phone"></i> Voor de shoot</h3>';
+                    	echo ''.get_field('dienst_voor').'';
+					}
+					
+					if(get_field('dienst_tijdens')){
+						echo '<h3><i class="far fa-fw fa-camera-retro"></i>  Tijdens de shoot</h3>';
+                    	echo ''.get_field('dienst_tijdens').'';
+					}
+					
+					if(get_field('dienst_na')){
+						echo '<h3><i class="far fa-fw fa-images"></i>  Na de shoot</h3>';
+                    	echo ''.get_field('dienst_na').'';
+					}
+					;?>
                     
-                    <h3>Tijdens de shoot</h3>            
-                    <?php the_field('dienst_tijdens');?>
-                    
-                    <h3>Na de shoot</h3>            
-                    <?php the_field('dienst_na');?>
+                    <?php
+					$dienstTitel = sanitize_title(get_field('dienst_titel'));
+					echo '<p class="mb-0"><a href="'.get_permalink(255).'?soort='.$dienstTitel.'" class="meer-informatie animatie">Boek een '.$dienstTitel.' shoot <i class="far fa-angle-right"></i></a></p>';
+					;?>
                 </div>
             </div>
         </section>

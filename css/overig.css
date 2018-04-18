@@ -668,7 +668,7 @@ figure.alignnone {
 			opacity:0.4;
 		}
 	
-		.owl-nav i {
+		.owl-nav svg {
 			font-size:30px;
 			color:var(--grijs);
 		}
@@ -685,13 +685,13 @@ body {
 @media (max-width: 767.98px){
 .offcanvas-collapse {
 	position: fixed;
-	left:0;
+	right:0;
 	top:60px;
 	bottom: 0;
 	width: 100%;
 	padding:30px;
 	overflow-y: auto;
-	background-color: var(--groenOverlay);
+	background-color:rgba(78,144,144,.95);
 	transition: -webkit-transform .5s ease-in-out;
 	transition: transform .5s ease-in-out;
 	transition: transform .5s ease-in-out, -webkit-transform .5s ease-in-out;

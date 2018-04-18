@@ -1,7 +1,10 @@
 <?php
 /**
-Template Name: SEO
+Template Name: Zoeken
 **/
+global $query_string;
+$search_query = wp_parse_str( $query_string );
+$search = new WP_Query( $search_query );
 get_header();?>
 
 <?php get_header(); ?>
@@ -16,22 +19,15 @@ get_header();?>
             </div>
         </section>
         
-        <section class="container-fluid mb-60" id="blogafbeelding">
-            <div class="row">
-                <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">           
-                    <a href="<?php the_field('seo_afbeelding');?>" title="<?php the_field('blog_titel');?>" class="animatie schaduw br draai">
-                        <figure class="mb-0">
-                            <img src="<?php the_field('seo_afbeelding');?>" alt="<?php the_field('seo_titel');?>" title="<?php the_field('seo_titel');?>" class="img-fluid" />
-                        </figure>
-                    </a>
-                </div>
-            </div>
-        </section>
-        
         <section class="container-fluid mb-90">
             <div class="row">
                 <div class="col-xs-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">           
-                    <?php the_field('seo_inhoud');?>
+                    <?php get_search_form(); ?>
+					
+					<?php
+					global $wp_query;
+					$total_results = $wp_query->found_posts;
+					?>
                 </div>
             </div>
         </section>

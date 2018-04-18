@@ -23,7 +23,7 @@
                             while($vragen->have_posts())
                             {
                                 $vragen->the_post();
-                                echo '<li><strong class="d-flex align-items-center">'.get_field('faq_vraag').' <i class="fa fa-angle-down ml-auto"></i></strong><div>'.get_field('faq_antwoord').'</div></li>';
+                                echo '<li><strong class="d-flex align-items-center">'.get_field('faq_vraag').' <div class="ml-auto"><span><i class="far fa-fw fa-angle-down"></i></span></div></strong><div>'.get_field('faq_antwoord').'</div></li>';
                             }
                             echo '</ul>';
                         echo '</section>';
